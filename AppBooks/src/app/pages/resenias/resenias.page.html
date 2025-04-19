@@ -1,0 +1,68 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <!-- <div style="margin-bottom: 10px;" class="ion-padding">
+    <ion-card-title style="font-weight: bold; color: navy;">{{libro.titulo}}</ion-card-title>
+    <ion-card-subtitle>{{libro.autor}}</ion-card-subtitle>
+  </div> -->
+
+  <ion-card class="ion-padding" style="margin-top: 50px;">
+    <div class="book-card">
+      <img [src]="libro.imagen || 'assets/placeholder.png'" alt="Portada del libro" />
+
+      <div class="book-info">
+        <ion-card-title>{{ libro.titulo }}</ion-card-title>
+        <ion-card-subtitle>{{ libro.autor }}</ion-card-subtitle>
+        <p class="publicacion">{{ libro.fecha_publicacion | date:'yyyy' }}</p>
+      </div>
+    </div>
+
+    <ion-card-content>
+      {{ libro.descripcion }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
+    <ion-fab-button (click)="irADetalle(libro)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <h4 class="ion-margin" style="font-weight: bold;">Reseñas</h4>
+
+  @for (resenia of resenias; track resenia.id_resenia ) {
+  <ion-item-sliding>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+
+      <ion-label>
+        <h4 style="font-weight: bold;">{{ resenia.usuario }}</h4>
+        <p>{{ resenia.fecha | date: 'yyyy-MM-dd' }}</p>
+        <ion-badge [color]="getColor(resenia.valoracion)" style="color: #fff;font-size: medium;">
+          {{ resenia.valoracion }}
+          <ion-icon name="star-outline"></ion-icon>
+        </ion-badge>
+        <p style="font-weight: bold; color: #000;">
+          {{resenia.comentario}}
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options>
+      <ion-item-option color="danger" (click)="eliminar(resenia.id_resenia)">Eliminar</ion-item-option>
+      <ion-item-option color="primary" (click)="irModificar(resenia)">Modificar</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  }
+
+</ion-content>

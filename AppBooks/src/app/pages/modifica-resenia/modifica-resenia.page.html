@@ -1,0 +1,29 @@
+<ion-header [translucent]="true" mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/resenias" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div align="center">
+    <ion-img src="assets/icon/book.jpg" style="width: 50vw;"></ion-img>
+  </div>
+
+  <form [formGroup]="formRegistro" (submit)="modificarResenia()" class="ion-margin">
+
+    <ion-textarea rows="6" label="Comentario" label-placement="floating" fill="outline" mode="md"
+      style="margin-bottom: 15px;" clearInput="true" maxlength="200" formControlName="comentario" required="true"
+      type="text" inputmode="text"></ion-textarea>
+
+    <ion-range labelPlacement="stacked" label="Valoración" [ticks]="true" [snaps]="true" [min]="0" [max]="10"
+      formControlName="valoracion" [pin]="true" class="ion-margin"></ion-range>
+
+    <ion-button style="margin-top: 15px;" mode="ios" type="submit" expand="block" color="secondary"
+      [disabled]="formRegistro.invalid">Registrar</ion-button>
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "AppBooks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
