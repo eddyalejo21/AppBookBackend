@@ -1,10 +1,10 @@
 <?php
-//TODO: Clase de Comercios
+//TODO: Clase de Libros
 require_once('../config/comun.php');
 
 class Libros
 {
-    //TODO: Implementar los metodos de la clase Proveedores
+    //TODO: Implementar los metodos de la clase Libros
     public $tabla;
 
     public function __construct()
